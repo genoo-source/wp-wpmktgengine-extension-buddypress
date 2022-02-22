@@ -5,7 +5,7 @@
     Author:  Genoo, LLC
     Author URI: http://www.genoo.com/
     Author Email: info@genoo.com
-    Version: 1.0.8
+    Version: 1.0.9
     License: GPLv2
 */
 /*
@@ -180,12 +180,28 @@ add_action('wpmktengine_init', function($repositarySettings, $api, $cache){
         $name = $name->name;
     }, 10, 2 );
 
-    //add_action('groups_promoted_member', '', 10, 2 );
-    //add_action('groups_banned_member', '', 10, 2 );
-    //add_action('groups_invite_user', '', 10, 2 );
-    //add_action('groups_membership_rejected', '', 10, 2 );
-}, 10, 3);
+        //add_action('groups_promoted_member', '', 10, 2 );
 
+        //add_action('groups_banned_member', '', 10, 2 );
+
+        //add_action('groups_invite_user', '', 10, 2 );
+
+        //add_action('groups_membership_rejected', '', 10, 2 );
+
+        add_filter(
+            'wpmktengine_tools_extensions_widget',
+            function ($array) {
+                $array['Buddypress'] =
+                    '<span style="color:green">Active</span>';
+                return $array;
+            },
+            10,
+            1
+        );
+    },
+    10,
+    3
+);
 
 /**
  * Genoo / WPME deactivation function
